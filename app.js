@@ -1,13 +1,20 @@
+if(process.env.NODE_ENV !== 'production') require('dotenv').config();
+
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
+app.use(express.static(__dirname+'/client'));
 app.use(bodyParser.json());
 
 category = require('./models/category');
 Item = require('./models/item');
 //Connect to mongoose
+
+//var MLAB_URI = process.env.MLAB_URI;
+//console.log(MLAB_URI);
+//mongoose.connect(MLAB_URI);
 mongoose.connect('mongodb://localhost/wishlist');
 var db = mongoose.connection;
 
@@ -75,7 +82,7 @@ var item = req.body;
       res.json(item);
     });
 });
-app.put('/api/items/:id', function(req, res){
+app.put('/api/items/:_id', function(req, res){
 var id = req.params._id
 var item = req.body;
     Item.updateItem(id, item,{}, function(err,item){
@@ -85,9 +92,9 @@ var item = req.body;
       res.json(item);
     });
 });
-app.delete('/api/items/:id', function(req, res){
+app.delete('/api/items/:_id', function(req, res){
 var id = req.params._id
-    item.removeItem(id, function(err,item){
+    Item.removeItem(id, function(err,item){
       if(err){
         throw err;
       }

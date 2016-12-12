@@ -1,0 +1,56 @@
+<a href="#!/item">Go Back</a>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Edit Item</h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-12">
+      <form ng-submit="updateItem()" ng-init="getItemById()" ng-controller="ItemsController">
+        <div class="form-group">
+          <label>Item</label>
+          <input type="text" class="form-control" ng-model="item.item" placeholder="Item">
+        </div>
+        <div class="form-group">
+          <label>Category</label>
+          <select ng-model="item.category" class="form-control">
+            <option value="Toys/Games">Toys/Games</option>
+            <option value="Clothes">Clothes</option>
+            <option value="Shoes">Shoes</option>
+            <option value="Electronics">Electronics</option>
+            <option value="Accessory">Accessory</option>
+            <option value="Home">Home</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Price</label>
+          <input type="text" class="form-control" ng-model="item.price" placeholder="Price">
+        </div>
+        <div class="form-group">
+          <!--<label>Category</label>
+          <input type="text" class="form-control" ng-model="item.category" placeholder="Category">
+        </div>-->
+        <div class="form-group">
+          <label>Description</label>
+          <textarea class="form-control" ng-model="item.description" placeholder="Description"></textarea>
+        </div>
+        <div class="form-group">
+          <label>Store</label>
+          <input type="text" class="form-control" ng-model="item.store" placeholder="Store">
+        </div>
+        <div class="form-group">
+          <label>Image URL</label>
+          <input type="text" class="form-control" ng-model="item.image_url" placeholder="Image URL">
+        </div>
+        <div class="form-group">
+          <label>Buy URL</label>
+          <input type="text" class="form-control" ng-model="item.buy_url" placeholder="Buy URL">
+        </div>
+
+        <button type="submit" class="btn btn-info">Submit</button>
+      </form>
+    </div>
+    </div>
+  </div>
+</div>

@@ -6,7 +6,7 @@ var itemSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  catagory:{
+  category:{
     type: String,
     required: true
   },
@@ -14,6 +14,9 @@ var itemSchema = mongoose.Schema({
     type: String
   },
   price:{
+    type: String
+  },
+  store:{
     type: String
   },
   image_url:{
@@ -31,8 +34,8 @@ var itemSchema = mongoose.Schema({
 var Item = module.exports = mongoose.model('Item',itemSchema);
 
 // Get items
-module.exports.getItems = function(limit, callback){
-    Item.find(callback).limit(limit);
+module.exports.getItems = function(callback){
+    Item.find(callback);
 }
 // Get Item
 module.exports.getItemById = function(id, callback){
@@ -41,16 +44,26 @@ module.exports.getItemById = function(id, callback){
 
 //Add items
 module.exports.addItem = function(item, callback){
-    Item.create(item, callback);
+    newItem = new Item({
+          item: item.item,
+          category: item.category,
+          price: item.price,
+          description: item.description,
+          store: item.store,
+          image_url: item.image_url,
+          buy_url: item.buy_url
+        })
+    newItem.save(callback);
 }
 //Update Item
 module.exports.updateItem = function(id,item, options,callback){
     var query = {_id: id};
     var update = {
-      name: item.name,
-      catagory: item.catagory,
+      item: item.item,
+      category: item.category,
       price: item.price,
       description: item.description,
+      store: item.store,
       image_url: item.image_url,
       buy_url: item.buy_url
 

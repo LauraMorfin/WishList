@@ -1,0 +1,26 @@
+<a href="#/items">Go Back</a>
+<div class="panel panel-default" ng-controller="ItemsController" ng-init="getItemById()">
+  <div class="panel-heading">
+    <h1 class="panel-title">{{item.item}}</h1>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+    	<div class="col-md-8">
+        	<img ng-src="{{item.image_url}}">
+    </div>
+  <div class="col-md-8">
+</p>{{item.description}}</p>
+<ul class="list-group">
+  <li class="list-group-item">Category: {{item.category}}</li>
+  <li class="list-group-item">Price: {{item.price}}</li>
+  <li class="list-group-item">Store: {{item.store}}</li>
+</ul>
+<a target="_blank" href="{{item.buy_url}}" class="btn btn-info">Purchase</a>
+</div>
+
+<div class="pull-right">
+  <a href="#!/items/edit/{{item._id}}">Edit</a> |  <a href="#" ng-click="removeItem(item._id)">Delete</a>
+</div>
+</div>
+</div>
+</div>
