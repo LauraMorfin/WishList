@@ -101,5 +101,7 @@ var id = req.params._id
       res.json(item);
     });
 });
-app.listen(3000);
-console.log('Running on port 3000...');
+
+var myPORT = process.env.PORT || 3000;
+app.listen(myPORT);
+console.log('Running on port ' + myPORT);
