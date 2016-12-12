@@ -1,4 +1,4 @@
-if(process.env.NODE_ENV !== 'production') require('dotenv').config();
+//if(process.env.NODE_ENV !== 'production') require('dotenv').config();
 
 var express = require('express');
 var app = express();
@@ -15,7 +15,7 @@ Item = require('./models/item');
 //var MLAB_URI = process.env.MLAB_URI;
 //console.log(MLAB_URI);
 //mongoose.connect(MLAB_URI);
-mongoose.connect('mongodb://localhost/wishlist');
+mongoose.connect(process.env.MONGO_URL ||'mongodb://localhost/wishlist');
 var db = mongoose.connection;
 
 app.get('/', function(req, res){
