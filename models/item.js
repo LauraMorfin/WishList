@@ -28,6 +28,10 @@ var itemSchema = mongoose.Schema({
   create_date:{
     type: Date,
     default:Date.now
+  },
+  purchased:{
+    type: Boolean,
+    default: false
   }
 });
 
